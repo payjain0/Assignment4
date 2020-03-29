@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="input_json_example" format="json">
+      <types:shape format="weave" example="examples/assignment3_json-2.json"><![CDATA[%dw 2.0
+
+type input_json_example = {|
+  data: Array<{|    Name: String,     accno: String,     age: String,     ssn: String  |}>
+|} {"example": "{\\\"data\\\":[{\\\"Name\\\":\\\"Srinivas\\\",\\\"accno\\\":\\\"1234567\\\",\\\"age\\\":\\\"30\\\",\\\"ssn\\\":\\\"1234567\\\"}]}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="output_json_example" format="json">
+      <types:shape format="weave" example="examples/assignment3_json-3.json"><![CDATA[%dw 2.0
+
+type output_json_example = {|
+  data: Array<{|    Name: String,     accno: String,     age: String,     ssn: String  |}>
+|} {"example": "{\\\"data\\\":[{\\\"Name\\\":\\\"Srinivas\\\",\\\"accno\\\":\\\"1234567\\\",\\\"age\\\":\\\"30\\\",\\\"ssn\\\":\\\"1234567\\\"}]}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#58136701-d571-4b68-b728-835b45297bb8">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="input_json_example"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="output_json_example"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#c0fdc165-acd6-4092-a9d8-e9f4956d527e">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="input_json_example"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="output_json_example"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
